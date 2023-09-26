@@ -12,54 +12,35 @@ namespace apiUniversidade2.Controllers;
     public class CursoController : ControllerBase
     {
       
-        [HttpGet (Name = "cursos")]
-        public  Curso GetCursos()
+       [HttpGet]
+       public ActionResult <IEnumereble <Curso>> Get()
+       {
+        var cursos = _context.Curso.ToList();
+        if (cursos is null)
+           return NotFound();
+
+           return cursos;
+       }
+
+        private readonly ILogger<CursoController>_logger;
+
+        private readonly ApiUniversidadeContext _context;
+
+        public CursoController(ILogger <Controllers> logger,ApiUniversidadeCintext)
         {
+                _logger = logger;
+                _context= _context;
 
-        List<Disciplina> disciplinas = new List<Disciplina>();
+        }
 
-        disciplinas.Add(new Disciplina {
-                Nome= "Banco de dados",
-                CargaHoraria= 60,
-                Semestre= 4,
-        });
-
-        disciplinas.Add(new Disciplina{
-                Nome= "Banco de dados",
-                CargaHoraria= 60,
-                Semestre= 4,
-        });
-
-        disciplinas.Add(new Disciplina {
-                Nome= "Banco de dados",
-                CargaHoraria= 60,
-                Semestre= 4, 
-        });
-
-        List<Aluno> alunos = new List<Aluno>();
-        alunos.Add(new Aluno {
-                Id= 20201031,
-                Nome= "Morgana",
-                Area= "Informatica",
-                DataDeNascimento= "8/8/1989",
-                CPF= "99999",
-
-
-
-
-        });
-
-
-        Curso c = new Curso{
-                Nome= "Programação para internet",
-                Area= "TI",
-                Duracao= 4,
-                disciplinas= disciplinas,
-        };
-
-        
-
-
-         return c;
+        [httpGet]
+        public ActionResult<IEnumerable<Cuso>> Get()
+        {
+                var cursos = _context.Curso.ToList();
+                if (cursos is null)
+                   return NotFound();
+                
+                return cursos;
+        }
     }
-}
+
