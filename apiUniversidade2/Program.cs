@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Apiuniversidade.Contex
+using Apiuniversidade.Contex;
 
 var builder = WebApplication.CreateBuilder(args);
 
