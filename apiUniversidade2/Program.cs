@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Apiuniversidade.Contex
+
 var builder = WebApplication.CreateBuilder(args);
+
+//add DbContext to acess PostareSQL
+var connectionString =builder.configuring.GetConnectionString("PosteSQL");
+builder.Services.AddContext<apiuniversidadeContext>(options=>options.UserNpgsql(connectionString));
 
 // Add services to the container.
 
